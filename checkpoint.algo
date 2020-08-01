@@ -1,0 +1,29 @@
+ALGORITHM checkpoint
+VAR
+    len,i,j,k,word,vowel : INTEGER;
+    str : STRING;
+
+BEGIN
+Write("please enter a sentence:");
+Read(str);
+    len := 0;
+    i:= 0;
+    WHILE (str[i] <> '.') DO
+        i:= i+1;
+        len:= len+1;
+    END_WHILE
+Write("The length of the sentence:",len);
+    word :=1;
+FOR j FROM 0 TO len STEP 1  DO
+    IF (str[j]=' ') THEN
+        word:=word+1;
+    END_IF
+END_FOR
+Write("The number of words in the sentence:",word);
+FOR k FROM 0 TO len STEP 1  DO
+    IF (str[k]='a' or str[k]='e' or str[k]='u' or str[k]='i' or str[k]='o' or str[k]='y') THEN
+        vowel:=vowel+1;
+    END_IF
+END_FOR
+Write("The number of vowels in the sentence:",vowel);
+END
