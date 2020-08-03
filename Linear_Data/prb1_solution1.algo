@@ -1,0 +1,35 @@
+ALGORITHM problem1_solution1
+VAR
+    set1 : ARRAY_OF INTEGER[];
+    set2 : ARRAY_OF INTEGER[];
+    sum : INTEGER :=0;
+    count,i,j : INTEGER;
+BEGIN
+    Write("give set1 :");
+    Read(set1);
+    Write("give set2 :");
+    Read(set2);
+    FOR i FROM 0 TO set1.length-1 STEP 1  DO
+        count :=0;
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+            IF (set1[i]=set2[j]) THEN
+                count:=count+1;
+            END_IF
+        END_FOR
+    IF (count=0) THEN
+        sum := sum+set1[i];
+    END_IF
+    END_FOR
+    FOR i FROM 0 TO set2.length-1 STEP 1  DO
+        count :=0;
+        FOR j FROM 0 TO set1.length-1 STEP 1  DO
+            IF (set2[i]=set1[j]) THEN
+                count:=count+1;
+            END_IF
+        END_FOR
+    IF (count=0) THEN
+        sum := sum+set2[i];
+    END_IF
+    END_FOR
+    Write("the sum of all distinct elements from the set is :",sum);
+END
