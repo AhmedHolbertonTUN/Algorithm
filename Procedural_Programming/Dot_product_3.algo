@@ -1,0 +1,21 @@
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER[2]) : INTEGER
+VAR
+    ps : INTEGER;
+BEGIN
+    ps := v1[0]*v2[0] + v1[1]*v2[1];
+    RETURN ps ;
+END
+
+ALGORITHM Dot_product_2
+VAR
+    i,n, res : INTEGER;
+    m  : ARRAY_OF INTEGER[n*2];
+BEGIN
+// n = number of pairs given vectors
+    FOR i FROM 0 TO n*2-1 STEP 2  DO
+    res := dot_product(m[i],m[i+1]);
+    IF (res = 0) THEN
+        Write(m[i] "and" m[i+1] "are orthogonal vectors");
+    END_IF    
+    END_FOR
+END

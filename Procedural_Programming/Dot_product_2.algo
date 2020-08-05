@@ -1,0 +1,13 @@
+ALGORITHM Dot_product_2
+VAR
+    i,n : INTEGER;
+    m  : ARRAY_OF INTEGER[n*2];
+BEGIN
+// n = number of pairs given vectors
+    FOR i FROM 0 TO n*2-1 STEP 2  DO
+    dot_product(m[i],m[i+1]);
+    IF (ps = 0) THEN
+        Write(m[i] "and" m[i+1] "are orthogonal vectors");
+    END_IF    
+    END_FOR
+END
