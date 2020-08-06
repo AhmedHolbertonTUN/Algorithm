@@ -1,0 +1,19 @@
+FUNCTION Insertion_Sort(arr : ARRAY_OF INTEGER[]) : ARRAY
+VAR
+    done : BOOLEAN := FALSE;
+    temp  : ARRAY_OF INTEGER[];
+    i : INTEGER;
+BEGIN
+    WHILE (NOT done) DO
+        done := TRUE;
+        FOR i FROM 1 TO arr.length-1 STEP 1  DO
+            IF (arr[i-1]>arr[i]) THEN
+                done := FALSE;
+                temp := arr[i-1];
+                arr[i-1] := arr[i];
+                arr[i] := temp;
+            END_IF
+        END_FOR
+    END_WHILE
+        RETURN arr ;
+END
