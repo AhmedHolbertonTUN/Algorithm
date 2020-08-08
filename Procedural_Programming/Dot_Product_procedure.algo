@@ -1,7 +1,14 @@
-PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER[2])
+PROCEDURE dot_product(v1,v2 : ARRAY_OF INTEGER, VAR dot : INTEGER)
 VAR
-    ps : INTEGER;
+    i : INTEGER;
 BEGIN
-    ps := v1[0]*v2[0] + v1[1]*v2[1];
-    Write("the scalar product of v1 and v2 :",ps);
+    dot :=0;
+    i:=0;
+    IF (v1.length <> v2.length) THEN
+        Write("vectors with different sizes we cannot calculat dot product");
+        dot := NaN; // NaN : not definte number
+    END_IF
+    WHILE (i <v1.length ) DO
+        dot := dot + v1[i]*v2[i];
+    END_WHILE
 END
