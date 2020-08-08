@@ -1,22 +1,13 @@
-FUNCTION checker(str : STRING, len,count : INTEGER) : INTEGER
+FUNCTION is_palindrome(s : STRING[50], start,end : INTEGER) : BOOLEAN
 BEGIN
-    IF (count >= len) THEN
-        RETURN 1;
+    IF (start >= end) THEN
+        RETURN TRUE;
+    ELSE_IF (s[start] = s[end]) THEN
+        RETURN is_palindrome(s, start +1, end -1);
+    ELSE
+        RETURN FALSE
     END_IF
-    IF (str[len] = str[count]) THEN
-        RETURN (checker(str, len - 1, count + 1));
-    END_IF
-    RETURN 0 ;
 END
-
-FUNCTION is_palindrome(str : STRING) : INTEGER
-VAR
-    len : INTEGER;
-    count : INTEGER := 0;
-BEGIN
-    len := str.length;
-    RETURN (checker(str, len - 1, count));
-END 
 
 ALGORITHM palindrome
 VAR
@@ -26,10 +17,10 @@ BEGIN
     Write("enter the string to check :");
     Read(s);
     res := is_palindrome(s);
-    IF (res = 1) THEN
+    IF (res = TRUE) THEN
         Write("the string is palindrome");
     END_IF
-    IF (res = 0) THEN
+    IF (res = FALSE) THEN
         Write("the string is not palindrome");
     END_IF
 END
