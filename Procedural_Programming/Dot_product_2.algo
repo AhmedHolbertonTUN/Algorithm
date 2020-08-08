@@ -1,13 +1,20 @@
-ALGORITHM Dot_product_2
+ALGORITHM orth_vectors
 VAR
-    i,n : INTEGER;
-    m  : ARRAY_OF INTEGER[n*2];
+    v1,v2 : ARRAY_OF INTEGER [50];
+    dot : INTEGER;
 BEGIN
-// n = number of pairs given vectors
-    FOR i FROM 0 TO n*2-1 STEP 2  DO
-    dot_product(m[i],m[i+1]);
-    IF (ps = 0) THEN
-        Write(m[i] "and" m[i+1] "are orthogonal vectors");
-    END_IF    
-    END_FOR
+    // Read Size of elements of V1 
+    n1 := read_size();
+    // Read elements of V1
+    read_array(n1,v1);
+    // Read Size of elements of V2 
+    n2 := read_size();
+    // Read elements of V2
+    read_array(n2,v2);
+    dot_product(v1,v2,dot);
+    IF (dot = 0) THEN
+        Write("V1 and V2 are orthogonal");
+    ELSE
+        Write("V1 and V2 are not orthogonal");
+    END_IF
 END
