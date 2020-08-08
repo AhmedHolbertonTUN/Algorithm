@@ -1,21 +1,36 @@
-FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER[2]) : INTEGER
+FUNCTION dot_product(v1,v2 : ARRAY_OF INTEGER) : INTEGER
 VAR
-    ps : INTEGER;
+    i, dot : INTEGER;
 BEGIN
-    ps := v1[0]*v2[0] + v1[1]*v2[1];
-    RETURN ps ;
+    dot :=0;
+    i:=0;
+    IF (v1.length <> v2.length) THEN
+        Write("vectors with different sizes we cannot calculat dot product");
+        RETURN NaN; // NaN : not definte number
+    END_IF
+    WHILE (i <v1.length ) DO
+        dot := dot + v1[i]*v2[i];
+    END_WHILE
+    RETURN dot ;
 END
 
-ALGORITHM Dot_product_2
+ALGORITHM orth_vectors
 VAR
-    i,n, res : INTEGER;
-    m  : ARRAY_OF INTEGER[n*2];
+    v1,v2 : ARRAY_OF INTEGER [50];
+    dot : INTEGER;
 BEGIN
-// n = number of pairs given vectors
-    FOR i FROM 0 TO n*2-1 STEP 2  DO
-    res := dot_product(m[i],m[i+1]);
-    IF (res = 0) THEN
-        Write(m[i] "and" m[i+1] "are orthogonal vectors");
-    END_IF    
-    END_FOR
+    // Read Size of elements of V1 
+    n1 := read_size();
+    // Read elements of V1
+    read_array(n1,v1);
+    // Read Size of elements of V2 
+    n2 := read_size();
+    // Read elements of V2
+    read_array(n2,v2);
+    dot := dot_product(v1,v2);
+    IF (dot = 0) THEN
+        Write("V1 and V2 are orthogonal");
+    ELSE
+        Write("V1 and V2 are not orthogonal");
+    END_IF
 END
